@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Placement Management System</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        header {
+            background: #1f4e79;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .welcome {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome h2 {
+            color: #1f4e79;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .login-section {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .login-card {
+            width: 280px;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+
+        .login-card h3 {
+            color: #1f4e79;
+            margin-top: 0;
+        }
+
+        button {
+            background: #1f4e79;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #163a5c;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Placement Management System</h1>
+        <p>Manage Students, Companies and Placement Applications</p>
+    </header>
+
+
+    <div class="container">
+
+        <div class="welcome">
+
+            <h2>Welcome</h2>
+
+            <p>
+                Welcome to the Student Placement Management System.
+                Select your login type to continue.
+            </p>
+
+
+            <div class="login-section">
+
+                <!-- Student Login -->
+
+                <div class="login-card">
+
+                    <h3>Student</h3>
+
+                    <p>
+                        View companies, check eligibility
+                        and apply for placements.
+                    </p>
+
+                    <button onclick="window.location.href='/student'">
+                        Student Login
+                    </button>
+
+                </div>
+
+
+                <!-- Admin Login -->
+
+                <div class="login-card">
+
+                    <h3>Administrator</h3>
+
+                    <p>
+                        Manage students, companies
+                        and placement applications.
+                    </p>
+
+                    <button onclick="window.location.href='/admin'">
+                        Admin Login
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+        <p>Student Placement Management System</p>
+        <p>Developed using Python, Flask and SQLite</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        header {
+            background: #1f4e79;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        button {
+            background: #1f4e79;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            margin: 8px;
+        }
+
+        button:hover {
+            background: #163a5c;
+        }
+
+        .back {
+            background: #666;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <h1>Student Dashboard</h1>
+
+    <p>
+        Student Placement Management System
+    </p>
+
+</header>
+
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Welcome Student 👨‍🎓</h2>
+
+        <p>
+            Manage your placement activities from here.
+        </p>
+
+
+        <button
+            onclick="window.location.href='/student/companies'">
+
+            View Companies
+
+        </button>
+
+
+        <button
+            onclick="window.location.href='/student/applications'">
+
+            My Applications
+
+        </button>
+
+
+        <br>
+
+
+        <button
+            class="back"
+            onclick="window.location.href='/'">
+
+            Back to Home
+
+        </button>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

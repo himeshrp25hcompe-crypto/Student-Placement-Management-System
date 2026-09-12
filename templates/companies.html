@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Available Companies</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        header {
+            background: #1f4e79;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .company-card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .company-card h2 {
+            color: #1f4e79;
+            margin-top: 0;
+        }
+
+        .company-card p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .apply-box {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        input {
+            padding: 10px;
+            width: 220px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            background: #1f4e79;
+            color: white;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #163a5c;
+        }
+
+        .back-button {
+            background: #666;
+            margin-top: 20px;
+        }
+
+        .no-company {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>Available Companies</h1>
+
+    <p>Placement Opportunities</p>
+
+</header>
+
+
+<div class="container">
+
+
+    {% if companies|length > 0 %}
+
+
+        {% for company in companies %}
+
+        <div class="company-card">
+
+            <h2>
+                {{ company["company_name"] }}
+            </h2>
+
+
+            <p>
+                <strong>Job Role:</strong>
+                {{ company["job_role"] }}
+            </p>
+
+
+            <p>
+                <strong>Minimum CGPA:</strong>
+                {{ company["min_cgpa"] }}
+            </p>
+
+
+            <p>
+                <strong>Package:</strong>
+                {{ company["package"] }} LPA
+            </p>
+
+
+            <p>
+                <strong>Location:</strong>
+                {{ company["location"] }}
+            </p>
+
+
+            <div class="apply-box">
+
+                <h3>Apply for this company</h3>
+
+                <form
+                    action="/student/apply"
+                    method="POST">
+
+
+                    <input
+                        type="hidden"
+                        name="company_id"
+                        value="{{ company['id'] }}">
+
+
+                    <input
+                        type="number"
+                        name="student_id"
+                        placeholder="Enter Student ID"
+                        required>
+
+
+                    <button type="submit">
+                        Apply
+                    </button>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+
+    {% else %}
+
+
+        <div class="no-company">
+
+            <h2>No Companies Found</h2>
+
+            <p>
+                There are currently no companies available.
+            </p>
+
+        </div>
+
+
+    {% endif %}
+
+
+    <button
+        class="back-button"
+        onclick="window.location.href='/student'">
+
+        Back to Student Dashboard
+
+    </button>
+
+
+</div>
+
+
+</body>
+
+</html>

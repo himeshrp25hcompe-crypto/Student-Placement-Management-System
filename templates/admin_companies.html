@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Companies</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        header {
+            background: #1f4e79;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1f4e79;
+        }
+
+        input {
+            padding: 11px;
+            margin: 7px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #1f4e79;
+            color: white;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 7px;
+        }
+
+        button:hover {
+            background: #163a5c;
+        }
+
+        .company {
+            border-top: 1px solid #ddd;
+            padding: 20px 0;
+        }
+
+        .delete {
+            background: #c0392b;
+        }
+
+        .delete:hover {
+            background: #922b21;
+        }
+
+        .back {
+            background: #666;
+        }
+
+        .edit-form {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f4f6f8;
+            border-radius: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>Manage Companies</h1>
+    <p>Student Placement Management System</p>
+</header>
+
+<div class="container">
+
+    <!-- ADD COMPANY -->
+
+    <div class="card">
+
+        <h2>Add New Company</h2>
+
+        <form action="/admin/companies/add" method="POST">
+
+            <input
+                type="text"
+                name="company_name"
+                placeholder="Company Name"
+                required>
+
+            <input
+                type="text"
+                name="job_role"
+                placeholder="Job Role"
+                required>
+
+            <input
+                type="number"
+                step="0.1"
+                min="0"
+                max="10"
+                name="min_cgpa"
+                placeholder="Minimum CGPA"
+                required>
+
+            <input
+                type="text"
+                name="package"
+                placeholder="Package (LPA)"
+                required>
+
+            <input
+                type="text"
+                name="location"
+                placeholder="Location"
+                required>
+
+            <br>
+
+            <button type="submit">
+                Add Company
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- EXISTING COMPANIES -->
+
+    <div class="card">
+
+        <h2>Existing Companies</h2>
+
+        {% if companies|length > 0 %}
+
+            {% for company in companies %}
+
+            <div class="company">
+
+                <h3>{{ company["company_name"] }}</h3>
+
+                <p>
+                    <strong>Job Role:</strong>
+                    {{ company["job_role"] }}
+                </p>
+
+                <p>
+                    <strong>Minimum CGPA:</strong>
+                    {{ company["min_cgpa"] }}
+                </p>
+
+                <p>
+                    <strong>Package:</strong>
+                    {{ company["package"] }} LPA
+                </p>
+
+                <p>
+                    <strong>Location:</strong>
+                    {{ company["location"] }}
+                </p>
+
+
+                <!-- EDIT COMPANY -->
+
+                <div class="edit-form">
+
+                    <h3>Edit Company</h3>
+
+                    <form
+                        action="/admin/companies/edit/{{ company['id'] }}"
+                        method="POST">
+
+                        <input
+                            type="text"
+                            name="company_name"
+                            value="{{ company['company_name'] }}"
+                            required>
+
+                        <input
+                            type="text"
+                            name="job_role"
+                            value="{{ company['job_role'] }}"
+                            required>
+
+                        <input
+                            type="number"
+                            step="0.1"
+                            min="0"
+                            max="10"
+                            name="min_cgpa"
+                            value="{{ company['min_cgpa'] }}"
+                            required>
+
+                        <input
+                            type="text"
+                            name="package"
+                            value="{{ company['package'] }}"
+                            required>
+
+                        <input
+                            type="text"
+                            name="location"
+                            value="{{ company['location'] }}"
+                            required>
+
+                        <br>
+
+                        <button type="submit">
+                            Save Changes
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- DELETE COMPANY -->
+
+                <form
+                    action="/admin/companies/delete/{{ company['id'] }}"
+                    method="POST"
+                    onsubmit="return confirm('Are you sure you want to delete this company?');">
+
+                    <button
+                        type="submit"
+                        class="delete">
+
+                        Delete Company
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No companies found.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="window.location.href='/admin'">
+
+        Back to Admin Dashboard
+
+    </button>
+
+</div>
+
+</body>
+
+</html>
