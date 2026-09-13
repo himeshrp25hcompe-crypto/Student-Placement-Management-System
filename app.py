@@ -3,6 +3,8 @@ import sqlite3
 import os
 
 app = Flask(__name__)
+# Create database tables if they don't exist
+import database
 
 # =========================
 # DATABASE
