@@ -1,9 +1,17 @@
 import sqlite3
+import os
 
-connection = sqlite3.connect("placement.db")
+# Get the folder where this file is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Create the database in the project folder
+DATABASE = os.path.join(BASE_DIR, "placement.db")
+
+connection = sqlite3.connect(DATABASE)
 
 cursor = connection.cursor()
 
+# Students table
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS students (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,6 +23,7 @@ CREATE TABLE IF NOT EXISTS students (
 )
 """)
 
+# Companies table
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS companies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,6 +35,7 @@ CREATE TABLE IF NOT EXISTS companies (
 )
 """)
 
+# Applications table
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS applications (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -34,7 +44,8 @@ CREATE TABLE IF NOT EXISTS applications (
     status TEXT
 )
 """)
+
 connection.commit()
 connection.close()
 
-print("Database created successfully!")
+print("Database tables created successfully!")
