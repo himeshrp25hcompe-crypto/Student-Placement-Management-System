@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Applications</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        header {
+            background: #1f4e79;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        h2 {
+            color: #1f4e79;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #1f4e79;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .back {
+            background: #666;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>My Applications</h1>
+
+    <p>Student Placement Management System</p>
+
+</header>
+
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>My Placement Applications</h2>
+
+
+        {% if applications|length > 0 %}
+
+        <table>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Student</th>
+
+                <th>Roll No</th>
+
+                <th>Company</th>
+
+                <th>Job Role</th>
+
+                <th>Package</th>
+
+                <th>Status</th>
+
+            </tr>
+
+
+            {% for application in applications %}
+
+            <tr>
+
+                <td>{{ application["id"] }}</td>
+
+                <td>{{ application["name"] }}</td>
+
+                <td>{{ application["roll_no"] }}</td>
+
+                <td>{{ application["company_name"] }}</td>
+
+                <td>{{ application["job_role"] }}</td>
+
+                <td>{{ application["package"] }} LPA</td>
+
+                <td>{{ application["status"] }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>No applications found.</p>
+
+        {% endif %}
+
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="window.location.href='/student'">
+
+        Back to Student Dashboard
+
+    </button>
+
+</div>
+
+</body>
+
+</html>
