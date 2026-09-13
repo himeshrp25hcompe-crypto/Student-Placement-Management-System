@@ -1,27 +1,42 @@
 # Student Placement Management System
 
-A web-based Student Placement Management System built using Python, Flask, SQLite, HTML and CSS.
+A beginner-friendly web-based **Student Placement Management System** developed using Python, Flask, SQLite, HTML, and CSS.
 
-## Features
+The system helps manage students, companies, placement applications, and CGPA-based eligibility through separate student and admin functionality.
 
-- Student management
-- Company management
-- Placement application management
-- CGPA-based eligibility
-- Application status updates
+## 🚀 Live Demo
+
+https://student-placement-management-system-a28k.onrender.com
+
+## 📌 Features
+
+### 👨‍🎓 Student
+- View available placement companies
+- Check CGPA-based eligibility
+- Apply for eligible companies
+- Prevent duplicate applications
+- View submitted applications
+- Track application status
+
+### 👨‍💼 Admin
 - Admin dashboard
-- Student application tracking
+- Add, edit, and delete students
+- Add, edit, and delete companies
+- View all placement applications
+- Manage application information
 
-## Technologies Used
+## 🛠️ Technologies Used
 
-- Python
+- Python 3
 - Flask
 - SQLite
-- HTML
-- CSS
-- Git & GitHub
+- HTML5
+- CSS3
+- Git
+- GitHub
+- Render
 
-## Project Structure
+## 📂 Project Structure
 
 ```text
 Student-Placement-Management-System/
